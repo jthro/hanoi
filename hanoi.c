@@ -2,11 +2,11 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-// #define DEBUG 0
+#define DEBUG
 #define ERROR 1
 #define SUCCESS 0
 
-#define RINGS 407 
+#define RINGS 5 
 
 void move(int start, int end); 
 int get_top_ring(int rod); 
