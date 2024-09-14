@@ -2,11 +2,9 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-#define DEBUG
 #define ERROR 1
 #define SUCCESS 0
 
-#define RINGS 5 
 
 void move(int start, int end); 
 int get_top_ring(int rod); 
@@ -21,16 +19,23 @@ void print_icon(int layer, int ring);
 void print_thin(void);
 void print_ring(int size); 
 
-int rods[3][RINGS] = { {0}, {0}, {0} };
-int moves = 0;
+uint64_t moves = 0;
 
-int main(void) {
-        for (int i = 0; i < RINGS; i++) {
+int main(int argc, char *argv[]) {
+        int rings = 5;
+        if (argc > 1) {
+                rings = atoi(argv[1]);
+        }
+        int *rods[3] = { calloc(rings, sizeof(int)), calloc(rings, sizeof(int)), calloc(rings, sizeof(int))};
+        int moves = 0;
+
+        for (int i = 0; i < rings; i++) {
                 rods[0][i] = i + 1;
         }
+
         print_rods();
 
-        int args[3] = { RINGS, 1, 3 };
+        int args[3] = { rings, 1, 3 };
         hanoi(args);
 
         print_rods();
