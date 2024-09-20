@@ -1,2 +1,4 @@
 hanoi:
-	clang hanoi.c -o hanoi
+	clang hanoi.c -o build/hanoi
+clean:
+	rm hanoi
